@@ -1,0 +1,158 @@
+{% schema %}
+{
+  "name": "Collection Collage Grid",
+  "tag": "section",
+  "class": "section section-collection-collage",
+  "settings": [
+    {
+      "type": "collection_list",
+      "id": "custom_collections",
+      "label": "Manually Selected Collections (optional)",
+      "limit": 50
+    },
+    {
+      "type": "select",
+      "id": "sort_order",
+      "label": "Collection Sort Order (applies if none selected above)",
+      "options": [
+        { "value": "manual", "label": "Manual (Shopify default)" },
+        { "value": "alphabetical", "label": "Alphabetical (A–Z)" },
+        { "value": "alphabetical_desc", "label": "Alphabetical (Z–A)" },
+        { "value": "newest", "label": "Newest First" }
+      ],
+      "default": "manual"
+    },
+    {
+      "type": "range",
+      "id": "desktop_columns",
+      "label": "Columns on Desktop",
+      "min": 2,
+      "max": 5,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "mobile_columns",
+      "label": "Columns on Mobile",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 2
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Collage Grid"
+    }
+  ]
+}
+{% endschema %}
+
+{% if section.settings.custom_collections and section.settings.custom_collections != blank %}
+  {% assign sorted_collections = section.settings.custom_collections %}
+{% else %}
+  {% assign sorted_collections = collections %}
+  {% case section.settings.sort_order %}
+    {% when 'alphabetical' %}
+      {% assign sorted_collections = collections | sort: 'title' %}
+    {% when 'alphabetical_desc' %}
+      {% assign sorted_collections = collections | sort: 'title' | reverse %}
+    {% when 'newest' %}
+      {% assign sorted_collections = collections | sort: 'published_at' | reverse %}
+    {% else %}
+      {% assign sorted_collections = collections %}
+  {% endcase %}
+{% endif %}
+
+
+<div
+  class="collection-collage-grid page-width"
+  style="
+    --columns-desktop: {{ section.settings.desktop_columns }};
+    --columns-mobile: {{ section.settings.mobile_columns }};
+    margin-bottom: 2.5rem;
+  "
+>
+  {% for collection in sorted_collections %}
+    <a href="{{ collection.url }}" class="collage-item">
+      {% if collection.image %}
+        <img
+          src="{{ collection.image | image_url: width: 800, format: 'webp' }}"
+          alt="{{- collection.title -}}"
+          loading="lazy"
+          width=""
+          height=""
+        >
+      {% else %}
+        <div class="no-image">No image</div>
+      {% endif %}
+      <div class="collage-title">{{- collection.title -}}</div>
+    </a>
+  {% endfor %}
+</div>
+
+<style>
+  .collection-collage-grid {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    grid-template-columns: repeat(var(--columns-desktop), 1fr);
+  }
+
+  @media (max-width: 767px) {
+    .collection-collage-grid {
+      grid-template-columns: repeat(var(--columns-mobile), 1fr);
+    }
+  }
+
+  .collage-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+    display: block;
+  }
+
+  .collage-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+    aspect-ratio: 4 / 5;
+    border-radius: 12px;
+  }
+
+  .collage-item:hover img {
+    transform: scale(1.05);
+  }
+
+  .collage-title {
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+    color: #fff;
+    padding: 2rem 1.5rem;
+    font-size: 2rem;
+    font-weight: 400;
+    font-family: 'Oswald', sans-serif;
+    text-align: left;
+    text-transform: uppercase;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+  }
+
+  .no-image {
+    width: 100%;
+    height: 300px;
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+  }
+</style>

@@ -1,0 +1,118 @@
+{% schema %}
+{
+  "name": "Collection Cover Grid",
+  "tag": "section",
+  "class": "collection-cover-grid",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "collection_tile",
+      "name": "Collection Tile",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Tile Image"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Link to Collection"
+        },
+        {
+          "type": "textarea",
+          "id": "custom_css",
+          "label": "Custom CSS for This Tile",
+          "default": "/* Your custom CSS for this block */"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "Collection Cover Grid",
+      "category": "Collections",
+      "blocks": []
+    }
+  ]
+}
+{% endschema %}
+
+<div class="collection-cover-grid-wrapper page-width">
+  {% for block in section.blocks %}
+    {% if block.type == 'collection_tile' and block.settings.collection and block.settings.image %}
+      <style>
+        /* Custom CSS scoped to this tile */
+        #tile-{{ block.id }} {
+          {{ block.settings.custom_css }}
+        }
+      </style>
+      <a
+        href="{{ block.settings.collection.url }}"
+        id="tile-{{ block.id }}"
+        class="collection-tile"
+        {{ block.shopify_attributes }}
+      >
+        <img
+          src="{{ block.settings.image | image_url: width: 1000, format: 'webp' }}"
+          alt="{{ block.settings.collection.title | escape }}"
+          width=""
+          height=""
+        >
+        <h2 class="collection-cover-grid-text">
+          <span>{{ block.settings.collection.title }}</span>
+        </h2>
+      </a>
+    {% endif %}
+  {% endfor %}
+</div>
+
+<style>
+  .collection-cover-grid-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+    position: relative;
+    padding: 0 2.25rem;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .collection-tile {
+    display: block;
+    overflow: hidden;
+    border-radius: 0px;
+    transition: transform 0.3s ease;
+    position: relative;
+  }
+
+  .collection-tile:hover {
+    transform: scale(1.02);
+  }
+
+  .collection-tile img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    border-radius: 0px;
+  }
+
+  .collection-cover-grid-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2.5rem;
+    font-family: "oswald", sans-serif;
+    font-size: 2.5rem;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    background: #111111;
+    background: linear-gradient(0deg, rgba(17, 17, 17, 1) 10%, rgba(255, 255, 255, 0) 100%);
+    margin-bottom: 0;
+  }
+</style>

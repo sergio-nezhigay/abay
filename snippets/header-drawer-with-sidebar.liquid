@@ -1,0 +1,11 @@
+{% comment %}
+  Renders a header drawer menu for mobile and desktop.
+
+  Usage:
+  {% render 'header-drawer' %}
+{% endcomment %}
+<button class="open-categories" id="header__menu-mobile" data-value="MEN">
+  <span>
+    {{- 'icon-hamburger.svg' | inline_asset_content -}}
+  </span>
+</button>

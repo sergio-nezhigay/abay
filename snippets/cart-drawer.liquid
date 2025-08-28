@@ -1,0 +1,137 @@
+<div id="ctm-cart-parent" class="cart-hidden">
+    <div id="ctm-cart-wrapper" class="ctm-cart-wrapper" aria-hidden="true">
+        <div class="ctm-cart-content">
+            <div class="ctm-cart-header">
+                <span class="__cartTitle">Your Cart</span>
+                <button class="__close">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" class="icon icon-close" viewBox="0 0 18 17"><path fill="currentColor" d="M.865 15.978a.5.5 0 0 0 .707.707l7.433-7.431 7.579 7.282a.501.501 0 0 0 .846-.37.5.5 0 0 0-.153-.351L9.712 8.546l7.417-7.416a.5.5 0 1 0-.707-.708L8.991 7.853 1.413.573a.5.5 0 1 0-.693.72l7.563 7.268z"></path></svg>
+                </button>
+            </div>
+            <div class="__devider">&nbsp;</div>
+            <div class="ctm-cart-body">
+                <form method="post" action="{{ routes.cart_url }}" id="CartDrawer-Form">
+                    {% comment %} FREE DELIVERY METER {% endcomment %}
+                    <div class="ctm-cartDeliveryMeter">
+                        <div id="FreeShippingBar" class="free-shipping-bar" style="margin: 1rem 0; width: 100%; ">
+                            <p id="FreeShippingText" style="margin-bottom: 0.5rem;">
+                            {% if remaining <= 0 %}
+                                🎉 Congratulations! You have Free Shipping!
+                            {% else %}
+                                Only <span class="money">{{ remaining | money }}</span> away from Free Shipping!
+                            {% endif %}
+                            </p>
+                            <div style="background: #eee; border-radius: 2px; overflow: hidden; height: 10px;">
+                            <div id="FreeShippingFill"
+                                style="height: 10px; width: {{ percent | round: 0 }}%; background: #27ae60; transition: width 0.3s ease;">
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% comment %} CART ITEMS {% endcomment %}
+                    {% section 'cart-stock-json' %}
+                    <div class="ctm-cartItems">
+
+                    </div>
+                    {% comment %} CART FREE GIFTS {% endcomment %}
+                    <div class="ctm-freeGiftsForm">
+                        <div class="visually-hidden">
+                            <input type="hidden" value="" id="gf-var-id">
+                        </div>
+                        <div class="gf-wrapper">
+                            <div class="gf-imgs">
+                                <img src="#" alt="" width="auto" height="auto">
+                            </div>
+                            <div class="gf-desc">
+                                <div class="gf-text"><span>🎁 Exclusive Gift!</span></div>
+                                <div class="gf-title"><span>----</span></div>
+                                <div class="gf-opts"></div>
+                                <div class="gf-submit">
+                                    <button type="button">ADD FREE CAP</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="__devider">&nbsp;</div>
+            <div class="ctm-cart-footer">
+                {% comment %} CART TOTAL {% endcomment %}
+                <div class="ctm-cartMoney">
+                    <div class="__cartMoney-title">
+                        <span class="h3">Estimated total</span>
+                    </div>
+                    <div class="__cartMoney-money">
+                        {% if cart.total_discount > 0 %}
+                            <span class="money">{{- cart.original_total_price | devided_by: 100 | money_with_currency -}}</span>
+                        {% endif %}
+                        <span class="money">{{- cart.total_price | devided_by: 100 | money_with_currency -}}</span>
+                    </div>
+
+                    <small class="tax-note caption-large rte">
+                        {%- if cart.duties_included and cart.taxes_included -%}
+                        {%- if shop.shipping_policy.body == blank -%}
+                            {{ 'sections.cart.duties_and_taxes_included_shipping_at_checkout_without_policy' | t }}
+                        {%- else -%}
+                            {{
+                            'sections.cart.duties_and_taxes_included_shipping_at_checkout_with_policy_html'
+                            | t: link: shop.shipping_policy.url
+                            }}
+                        {%- endif -%}
+                        {%- elsif cart.duties_included == false and cart.taxes_included -%}
+                        {%- if shop.shipping_policy.body == blank -%}
+                            {{ 'sections.cart.taxes_included_shipping_at_checkout_without_policy' | t }}
+                        {%- else -%}
+                            {{
+                            'sections.cart.taxes_included_shipping_at_checkout_with_policy_html'
+                            | t: link: shop.shipping_policy.url
+                            }}
+                        {%- endif -%}
+                        {%- elsif cart.duties_included and cart.taxes_included == false -%}
+                        {%- if shop.shipping_policy.body == blank -%}
+                            {{ 'sections.cart.duties_included_taxes_at_checkout_shipping_at_checkout_without_policy' | t }}
+                        {%- else -%}
+                            {{
+                            'sections.cart.duties_included_taxes_at_checkout_shipping_at_checkout_with_policy_html'
+                            | t: link: shop.shipping_policy.url
+                            }}
+                        {%- endif -%}
+                        {%- elsif cart.duties_included == false and cart.taxes_included == false -%}
+                        {%- if shop.shipping_policy.body == blank -%}
+                            {{ 'sections.cart.taxes_at_checkout_shipping_at_checkout_without_policy' | t }}
+                        {%- else -%}
+                            {{
+                            'sections.cart.taxes_at_checkout_shipping_at_checkout_with_policy_html'
+                            | t: link: shop.shipping_policy.url
+                            }}
+                        {%- endif -%}
+                        {%- endif -%}
+                    </small>
+                </div>
+                {% comment %} CHECKOUT BUTTONS {% endcomment %}
+                <div class="ctm-cartCheckout">
+                  <button class="hidden cc-btn-2" type="submit" form="CartDrawer-Form" name="checkout">
+                        {{ 'sections.cart.checkout' | t }}
+                    </button>
+                    <button class="cc-btn-1">
+                        {{ 'sections.cart.checkout' | t }}
+                    </button>
+                </div>
+            </div>
+            {% comment %} LOADER {% endcomment %}
+            <div class="ctm-cart-loader">
+                <span class="loader"></span>
+            </div>
+            {% comment %} IF CART IS EMPTY {% endcomment %}
+            <div class="ctm-cart-empty">
+                <div class="cce-wrapper">
+                    <p class="h3">
+                        Your cart is empty
+                    </p>
+                    <a href="{{ routes.all_products_collection_url }}">
+                        <div>Continue Shopping</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

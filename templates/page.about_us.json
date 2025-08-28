@@ -1,0 +1,186 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "image_with_text_iEt4W7": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_Hhe9Gm": {
+          "type": "heading",
+          "settings": {
+            "heading": "WHO WE ARE",
+            "heading_size": "h1"
+          }
+        },
+        "text_xYDfTe": {
+          "type": "text",
+          "settings": {
+            "text": "<p>In a world where showing more has become the norm, we choose to cover with pride.<br/>We stand for elegance, dignity, subtle strength – going against the shifting trends that chase nudity.<br/><br/><strong>Our styles are not loud – but it speak volumes.</strong><br/><br/>We believe modesty isn’t about hiding – it’s about owning your presence without compromise. Every piece we create is a statement: that style doesn’t have to scream to be seen, and dressing with intention can be the boldest look in the room.<br/><br/><strong>Modesty is our strength – it’s not silence.<br/>Our style is our language.<br/>We’re here to dress you up – with purpose, with class and conviction.</strong></p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_Hhe9Gm",
+        "text_xYDfTe"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/ABAY_core_banners_1.jpg",
+        "height": "medium",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "ambient",
+        "content_layout": "overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "color_scheme": "scheme-0feea0a7-e8bf-4ed0-916b-ed0e828ad7e6",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "multicolumn_dBr8WP": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_imwR9M": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/ABAY_TSHIRT.png",
+            "title": "Oversized Streetwear",
+            "text": "<p>From heavyweight T-shirts to slouchy joggers and hoodies, our oversized cuts deliver comfort with attitude — made for all-day wear and self-expression.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_nkR6NU": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/ABAY_ABAYA.jpg",
+            "title": "Modern Abayas",
+            "text": "<p>Elevate modestwear with our exclusive abayas — tailored silhouettes, luxe fabrics, and intricate embroidery that blend tradition with bold minimalism.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_rCTRTb": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/ItisWritten.jpg",
+            "title": "DTG & Embroidery Designs",
+            "text": "<p>We design premium DTG and stitched graphics you won’t find anywhere else — available on select abayas, T-shirts, and hoodies in limited drops.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_imwR9M",
+        "column_nkR6NU",
+        "column_rCTRTb"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "WHAT WE OFFER",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "color_scheme": "scheme-3",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "multicolumn_bnqia7": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_TAKzWg": {
+          "type": "column",
+          "settings": {
+            "title": "<strong>EXCLUSIVE DROPS ONLY</strong>",
+            "text": "<p><em>DTG and embroidery art you won’t find anywhere else.</em></p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_k7kwpm": {
+          "type": "column",
+          "settings": {
+            "title": "<strong>ARTIST-DRIVEN PRINTS</strong>",
+            "text": "<p><em>No mass production. Just limited pieces with unmatched design.</em></p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_wBFKt7": {
+          "type": "column",
+          "settings": {
+            "title": "<strong>UNISEX FITS</strong>",
+            "text": "<p><em>Designed to empower all bodies, all voices.</em></p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_RVptgi": {
+          "type": "column",
+          "settings": {
+            "title": "<strong>ROOTED IN THE GULF</strong>",
+            "text": "<p><em>Made for the region. Styled for the world.</em></p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_TAKzWg",
+        "column_k7kwpm",
+        "column_wBFKt7",
+        "column_RVptgi"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "WHY ABAY.COM",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 2,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_iEt4W7",
+    "multicolumn_dBr8WP",
+    "multicolumn_bnqia7"
+  ]
+}

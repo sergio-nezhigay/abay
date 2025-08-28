@@ -1,0 +1,119 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "contact_form_piDFiG": {
+      "type": "contact-form",
+      "name": "t:sections.contact-form.presets.name",
+      "settings": {
+        "heading": "Contact form",
+        "heading_size": "h1",
+        "color_scheme": "scheme-1",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "multicolumn_TA3Kwm": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_GXmbz6": {
+          "type": "column",
+          "settings": {
+            "title": "Contact Number",
+            "text": "<p>+971 (04) 272 5618 | +971 58 875 0124</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_ktBf6x": {
+          "type": "column",
+          "settings": {
+            "title": "Email",
+            "text": "<p>INFO@ABAY.COM</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_aqycpx": {
+          "type": "column",
+          "settings": {
+            "title": "Location",
+            "text": "<p>WH-51 GOSHI WAREHOUSE, AL QOUZ, DUBAI, UAE</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_HtmyWt": {
+          "type": "column",
+          "settings": {
+            "title": "Working Hours",
+            "text": "<p>MONDAY - SATURDAY: 10AM - 7PM</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_GXmbz6",
+        "column_ktBf6x",
+        "column_aqycpx",
+        "column_HtmyWt"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "Let’s Stay Connected",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 2,
+        "column_alignment": "center",
+        "background_style": "primary",
+        "color_scheme": "scheme-3",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "collection_featured_custom_AEVYd6": {
+      "type": "collection-featured-custom",
+      "name": "Custom Featured Collection",
+      "settings": {
+        "collection": "shop-all",
+        "products_limit": 16,
+        "show_swatches": true,
+        "show_secondary_image": true,
+        "heading": "You may also like",
+        "show_view_all": false,
+        "view_all_url": "shopify://collections/all",
+        "view_all_label": "View All",
+        "section_padding_top": 40,
+        "section_padding_bottom": 40,
+        "columns": "4"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "contact_form_piDFiG",
+    "multicolumn_TA3Kwm",
+    "collection_featured_custom_AEVYd6"
+  ]
+}

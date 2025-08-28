@@ -1,0 +1,80 @@
+{% comment %}
+  CUSTOM SLIDER
+{% endcomment %}
+{% if template.name == 'product' %}
+  {{ 'product-media-picker.css' | asset_url | stylesheet_tag }}
+  <script src="https://kit.fontawesome.com/2cceb83b09.js" crossorigin="anonymous" async></script>
+{% endif %}
+<div class="new-picker-media">
+  <!-- Main -->
+  <div class="main-media">
+    {% for image in product.media %}
+      {% assign variant_ids = '' %}
+      {% for variant in product.variants %}
+        {% if variant.featured_media and variant.featured_media.id == image.id %}
+          {% assign variant_ids = variant_ids | append: variant.id | append: ',' %}
+        {% endif %}
+      {% endfor %}
+      {% assign variant_ids = variant_ids | split: ',' | uniq | compact | join: ',' %}
+
+      <div
+        class="mm-item-img"
+        data-media-id="{{ image.id }}"
+        {% if variant_ids != '' %}
+          data-variant-ids="[{{ variant_ids }}]"
+        {% endif %}
+      >
+        {% if image.media_type == 'image' %}
+          <img
+            alt="{{ image.alt | escape }}"
+            data-lazy="{{ image.preview_image.src | image_url: width: '480', format: 'webp' }}"
+            data-big="{{ image.preview_image.src | image_url: format: 'webp' }}"
+            width="485"
+            height="485"
+            style="object-fit: contain"
+          >
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- Buttons Next & Prev -->
+  <button class="mm-prevnext mm-prev">
+    <i class="fa-solid fa-chevron-left"></i>
+  </button>
+  <button class="mm-prevnext mm-next">
+    <i class="fa-solid fa-chevron-right"></i>
+  </button>
+  <!-- Slider Control -->
+  <div class="main-media-ctl">
+    {% for media in product.media %}
+      {% assign variant_ids = '' %}
+      {% for variant in product.variants %}
+        {% if variant.featured_media and variant.featured_media.id == media.id %}
+          {% assign variant_ids = variant_ids | append: variant.id | append: ',' %}
+        {% endif %}
+      {% endfor %}
+      {% assign variant_ids = variant_ids | split: ',' | uniq | compact | join: ',' %}
+
+      <div
+        class="mm-item-ctl"
+        data-media-id="{{ media.id }}"
+        {% if variant_ids != '' %}
+          data-variant-ids="[{{ variant_ids }}]"
+        {% endif %}
+      >
+        <img
+          alt="{{ media.alt | escape }}"
+          data-lazy="{{ media | image_url: width: 100, format: 'webp' }}"
+          width="100"
+          height="100"
+          style="object-fit: contain"
+        >
+      </div>
+    {% endfor %}
+  </div>
+</div>
+<div class="img-viewer-full">
+  <button type="button">X</button>
+  <img src="" width="auto" height="aut">
+</div>

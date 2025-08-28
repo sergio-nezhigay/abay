@@ -1,0 +1,203 @@
+{% comment %}
+  Custom Footer Quicklinks with Theme Settings Support
+{% endcomment %}
+
+<!-- DESKTOP VERSION -->
+<section class="footer-quicklinks version-desk">
+  <div class="footer-content">
+    <div class="footer__logo-social">
+      {% if settings.logo %}
+        <img src="{{ settings.logo | image_url: width: '200', format: 'webp' }}" alt="Logo" width="auto" height="auto">
+      {% endif %}
+  
+      <div class="footer__social">
+        {% render 'social-icons' %}
+      </div>
+    </div>
+  
+    <div class="footer__quicklink-menus">
+      {%- assign menu = linklists[section.settings.quicklinks_menu] -%}
+      {%- if menu and menu.links.size > 0 -%}
+        {%- for link in menu.links limit: 2 -%}
+          <div class="mainlinks-menu">
+            <h4 class="quicklink-title">
+              <a href="{{ link.url }}">
+                <div>{{ link.title }}</div>
+              </a>
+            </h4>
+            {% if link.links.size > 0 %}
+              <div class="sublinks-menu">
+                {%- for sublink in link.links -%}
+                  <div class="sublinks-items">
+                    <a href="{{ sublink.url }}">
+                      <div>{{ sublink.title }}</div>
+                    </a>
+                  </div>
+                {%- endfor -%}
+              </div>
+            {% endif %}
+          </div>
+        {%- endfor -%}
+
+        <div class="mainlinks-menu">
+          <h4 class="quicklink-title">
+            <a href="javascript:void(0)">
+              <div>About {{ shop.name }}</div>
+            </a>
+          </h4>
+          <div class="sublinks-menu">
+            {%- for link in menu.links limit: 2 offset: 3 -%}
+              <div class="sublinks-items">
+                <a href="{{ link.url }}">
+                  <div>{{ link.title }}</div>
+                </a>
+              </div>
+            {%- endfor -%}
+            
+            {% if customer %}
+              <div class="sublinks-items">
+                <a href="/account/orders">
+                  <div>My Orders</div>
+                </a>
+              </div>
+              <div class="sublinks-items">
+                <a href="/account/profile">
+                  <div>My profile</div>
+                </a>
+              </div>
+              <div class="sublinks-items">
+                <a href="/account/settings">
+                  <div>Settings</div>
+                </a>
+              </div>
+            {% else %}
+              <div class="sublinks-items">
+                <a href="/account">
+                  <div>LOGIN</div>
+                </a>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+  <hr>
+  <div class="footer-content">
+    <div class="footer-policy">
+      <ul>
+        <li style="list-style: none;">
+          <span>&copy; {{ shop.name | link_to: routes.root_url -}} </span>
+        </li>
+        {% for policy in shop.policies %}
+          <li><a href="{{ policy.url }}">{{ policy.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- MOBILE VERSION -->
+<section class="footer-quicklinks version-mobi">
+  <div class="mb-quicklinks-container text-center">
+    {% if settings.logo %}
+      <img src="{{ settings.logo | image_url: width: '100', format: 'webp' }}" alt="Logo" width="auto" height="auto">
+    {% endif %}
+
+    <div class="footer__social">
+      {% render 'social-icons' %}
+    </div>
+  </div>
+
+  <div class="mb-quicklinks-container">
+    {%- assign menu = linklists[section.settings.quicklinks_menu] -%}
+    {%- if menu and menu.links.size > 0 -%}
+      <ul>
+        {%- for link in menu.links limit: 2 -%}
+          <li class="mb-quick-items">
+            <div class="mb-quick-title">
+              <a href="{{ link.url }}">
+                {{- link.title -}}
+              </a>
+              <div>
+                <img src="{{ 'ChevronDownIcon.svg' | file_url }}" width="25" height="25">
+              </div>
+            </div>
+            <div class="mb-quick-value">
+              {% if link.links.size > 0 %}
+                <div class="sublinks-menu">
+                  {%- for sublink in link.links -%}
+                    <div class="sublinks-items">
+                      <a href="{{ sublink.url }}">
+                        <div>{{ sublink.title }}</div>
+                      </a>
+                    </div>
+                  {%- endfor -%}
+                </div>
+              {% endif %}
+            </div>
+          </li>
+        {%- endfor -%}
+
+        <li class="mb-quick-items">
+          <div class="mb-quick-title">
+            <a href="javascript:void(0)">
+              <div>About {{ shop.name }}</div>
+            </a>
+            <div>
+              <img src="{{ 'ChevronDownIcon.svg' | file_url }}" width="25" height="25">
+            </div>
+          </div>
+          <div class="mb-quick-value">
+            {%- for link in menu.links limit: 2 offset: 3 -%}
+              <div class="sublinks-items">
+                <a href="{{ link.url }}">
+                  <div>{{ link.title }}</div>
+                </a>
+              </div>
+            {%- endfor -%}
+            
+            {% if customer %}
+              <div class="sublinks-items">
+                <a href="/account/orders">
+                  <div>My Orders</div>
+                </a>
+              </div>
+              <div class="sublinks-items">
+                <a href="/account/profile">
+                  <div>My profile</div>
+                </a>
+              </div>
+              <div class="sublinks-items">
+                <a href="/account/settings">
+                  <div>Settings</div>
+                </a>
+              </div>
+            {% else %}
+              <div class="sublinks-items">
+                <a href="/account">
+                  <div>LOGIN</div>
+                </a>
+              </div>
+            {% endif %}
+          </div>
+        </li>
+      </ul>
+    {%- endif -%}
+  </div>
+
+  <hr>
+
+  <div class="mb-quicklinks-container" style="padding-bottom: 2.5rem; ">
+    <div class="footer-policy">
+      <ul>
+        <li style="list-style: none;">
+          <span>&copy; {{ shop.name | link_to: routes.root_url -}} </span>
+        </li>
+        {% for policy in shop.policies %}
+          <li><a href="{{ policy.url }}">{{ policy.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>

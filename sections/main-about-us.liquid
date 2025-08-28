@@ -1,0 +1,107 @@
+{% schema %}
+{
+  "name": "Custom About Us",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "stack_on_mobile",
+      "label": "Stack on mobile",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "gap_spacing",
+      "label": "Gap spacing",
+      "options": [
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" }
+      ],
+      "default": "small"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "WHO WE ARE"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom About Us"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="
+  about-us-section
+  {% if section.settings.full_width %} full-width {% endif %}
+  gap-{{ section.settings.gap_spacing }}
+  text-{{ section.settings.text_alignment }}
+">
+  <div class="about-us-content">
+    {% if section.settings.subheading != blank %}
+      <h4 class="subheading">{{ section.settings.subheading }}</h4>
+    {% endif %}
+    
+    {% if section.settings.heading != blank %}
+      <h2 class="heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+    
+    {% if section.settings.content != blank %}
+      <div class="content">
+        {{ section.settings.content }}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+.about-us-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px 20px;
+}
+.about-us-content {
+  max-width: 800px;
+}
+.about-us-section.gap-small { gap: 10px; }
+.about-us-section.gap-medium { gap: 20px; }
+.about-us-section.gap-large { gap: 40px; }
+.about-us-section.text-left { text-align: left; }
+.about-us-section.text-center { text-align: center; }
+.about-us-section.text-right { text-align: right; }
+.full-width {
+  width: 100%;
+}
+</style>

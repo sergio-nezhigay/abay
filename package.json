@@ -1,0 +1,15 @@
+{
+  "name": "abay",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "shopify theme dev --store=ubgs8y-qt.myshopify.com --theme 153771081971",
+    "push": "shopify theme push --store=ubgs8y-qt.myshopify.com --theme 153771081971",
+    "pull": "shopify theme pull --store=ubgs8y-qt.myshopify.com --theme 153771081971"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

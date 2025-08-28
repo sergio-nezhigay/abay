@@ -1,0 +1,35 @@
+button.option-button {
+    padding: 1.00rem 0.75rem;
+    margin: 0.50rem;
+    background: none;
+    font-size: 1.20rem;
+    text-transform: capitalize;
+    font-weight: lighter;
+    border: 1px solid #d3d3d3;
+    border-radius: 0.50rem;
+    min-width: 5rem;
+    text-align: center;
+    color: #444;
+}
+
+button.option-button.vr-option.vr-buttons.disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+button.option-button.selected {
+    border: 2px solid #000 !important;
+    font-weight: 700;
+}
+
+button.option-button.vr-swatch {
+    width: 4rem !important;
+    min-width: 0rem;
+    padding: 1.85rem 1.5rem;
+    border-radius: 100%;
+}
+
+button.option-button.vr-swatch.selected {
+    outline: 2px solid #000;
+    border: 2px solid #fff !important;
+}

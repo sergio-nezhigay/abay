@@ -1,0 +1,52 @@
+<nav class="header__inline-menu">
+  <ul class="list-menu list-menu--inline" role="list">
+    {%- for link in section.settings.menu.links -%}
+      <li class="list-menu__item-wrapper">
+        {%- if link.links != blank -%}
+          <div class="dropdown">
+            <a
+              href="{{ link.url }}"
+              class="header__menu-item list-menu__item link link--text focus-inset dropdown-toggle"
+              {% if link.current %}
+                aria-current="page"
+              {% endif %}
+            >
+              <span {% if link.current %}class="header__active-menu-item"{% endif %}>
+                {{- link.title | escape -}}
+              </span>
+            </a>
+            <ul class="dropdown-menu">
+              {%- for child_link in link.links -%}
+                <li>
+                  <a
+                    href="{{ child_link.url }}"
+                    class="dropdown-link"
+                    {% if child_link.current %}
+                      aria-current="page"
+                    {% endif %}
+                  >
+                    {{- child_link.title | escape -}}
+                  </a>
+                </li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- else -%}
+          <a
+            href="{{ link.url }}"
+            class="header__menu-item list-menu__item link link--text focus-inset"
+            {% if link.current %}
+              aria-current="page"
+            {% endif %}
+          >
+            <span {% if link.current %}class="header__active-menu-item"{% endif %}>
+              {{- link.title | escape -}}
+            </span>
+          </a>
+        {%- endif -%}
+      </li>
+    {%- endfor -%}
+  </ul>
+</nav>
+
+{% render 'categories-sidebar' %}

@@ -1,0 +1,116 @@
+<div id="categories-sidebar" class="sidebar">
+  <div class="sidebar__header">
+    <button id="close-categories" class="close-button">×</button>
+    <ul class="list list-social list-unstyled" role="list" style="height: 100%;">
+      {%- for link in section.settings.menu.links limit: 2 offset: 3 -%}
+        <li class="show-on-mb" style="height: 100%;position: relative;">
+          <a
+            href="{{ link.url }}"
+            style="border: none; background: transparent; font-size: 1.25rem; margin-top: 0.50rem;"
+          >
+            <div style="height: 100%; display: flex; align-content: center; justify-content: center; align-items: center; 0.75rem 1.00rem ">
+              {{ link.title }}
+            </div>
+          </a>
+        </li>
+      {%- endfor -%}
+
+      {%- if shop.customer_accounts_enabled -%}
+        <li class="show-on-mb" style="height: 100%; position: relative;">
+          <a
+            href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
+            class="sb__account"
+            rel="nofollow"
+            style="text-transform: uppercase; border: none; background: transparent; font-size: 1.45rem; margin-top: 0.50rem;"
+          >
+            <div style="height: 100%; display: flex; align-content: center; justify-content: center; align-items: center; 0.75rem 1.00rem ">
+              {%- liquid
+                if customer
+                  echo 'customer.account_fallback' | t
+                else
+                  echo 'customer.log_in' | t
+                endif
+              -%}
+            </div>
+          </a>
+        </li>
+      {%- endif -%}
+    </ul>
+  </div>
+  <div class="sidebar__content">
+    <div class="sidebar__controllers">
+      {% for link in linklists['new-main-menu'].links limit: 3 %}
+        <div class="sc_wrapper">
+          {% if link.links != blank %}
+            <button class="sc_btn" data-content="{{- link.title | escape -}}" data-url="{{- link.url | escape -}}">
+              {{- link.title | escape -}}
+            </button>
+          {% else %}
+            <a href="{{ link.url }}" class="sc_btn">
+              {{- link.title | escape -}}
+            </a>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="sidebar__value">
+      {% for link in linklists['new-main-menu'].links limit: 3 %}
+        {% if link.links != blank %}
+          <div class="sv_wrapper" data-content="{{- link.title | escape -}}">
+            {% for sub_link in link.links %}
+              {% assign collection_handle = sub_link.url | remove: '/collections/' %}
+              {% assign linked_collection = collections[collection_handle] %}
+              <div class="sv_content">
+                <div class="sv_media">
+                  {% if linked_collection and linked_collection.image %}
+                    <img src="{{ linked_collection.image | image_url: width: '1080', format: 'webp' }}" width="auto" height="auto" alt="{{ linked_collection.title }}">
+                  {% else %}
+                    <img src="https://placehold.co/1920x1080" width="auto" height="auto" nofollow>
+                  {% endif %}
+                </div>
+                <a href="{{ sub_link.url }}" class="stretched-link">
+                  <div class="sv_infos">
+                    <span>{{ sub_link.title }}</span>
+                  </div>
+                </a>
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <div class="sidebar__utility">
+      <ul class="list list-social list-unstyled" role="list">
+        <li
+          style="
+            position: relative;
+            width: 100%;
+          "
+        >
+          <a
+            class="sidebar-all-link"
+            href="#"
+            style="
+              border: none;
+              background: transparent;
+              padding: 1.75rem;
+              font-size: 1.45rem;
+              margin-top: 0.50rem;
+              border-top: 1px solid #ccc9;
+              position: absolute;
+              top: -15px;
+              left: 0;
+              right: 0;
+              text-align: center;
+            "
+          >
+            VIEW ALL
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div id="sidebar-overlay" class="sidebar-overlay"></div>

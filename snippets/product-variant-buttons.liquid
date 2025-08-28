@@ -1,0 +1,36 @@
+{% assign product_form_id = 'product-form-' | append: section.id %}
+{% assign product_first_pick = product.first_available_variant.id %}
+{% if template.name == 'product' %}
+  {{ 'product-media-picker.css' | asset_url | stylesheet_tag }}
+{% endif %}
+<div id="product-variant-buttons">
+  {% for option in product.options_with_values %}
+    <div class="vr-option-group" data-option-index="{{ forloop.index0 }}">
+      <label>{{ option.name }}</label>
+      <div class="option-values">
+        {% if option.name == 'Color' %}
+          {% for value in option.values %}
+            <button
+              type="button"
+              class="option-button vr-option vr-swatch"
+              data-value="{{ value | escape }}"
+              data-option="{{ option.name | escape }}"
+              style="background-color: {{ value.swatch.color }}"
+            ></button>
+          {% endfor %}
+        {% else %}
+          {% for value in option.values %}
+            <button
+              type="button"
+              class="option-button vr-option vr-buttons"
+              data-value="{{ value | escape }}"
+              data-option="{{ option.name | escape }}"
+            >
+              {{ value }}
+            </button>
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  {% endfor %}
+</div>

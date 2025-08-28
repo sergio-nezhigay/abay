@@ -1,0 +1,231 @@
+/* Sidebar Styling */
+button#header__menu-mobile {
+  display: none;
+  border: none;
+  background: transparent;
+  color: inherit;
+  width: fit-content;
+}
+
+button#header__menu-mobile svg.icon.icon-hamburger {
+  width: 2rem;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40rem;
+  height: 100%;
+  background: #fff;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+  z-index: 9999;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar * {
+  color: #414141 !important;
+}
+
+.sidebar.open {
+  transform: translateX(0);
+}
+
+.sidebar__header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border-bottom: 2px solid #ccc9;
+}
+
+.sidebar__link {
+  display: block;
+  padding: 10px 0;
+  font-size: 18px;
+  text-decoration: none;
+  color: #333;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+  margin-right: auto;
+  padding: 1.5rem;
+}
+
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 9998;
+  display: none;
+}
+
+.sidebar-overlay.show {
+  display: block;
+}
+
+.sidebar .sidebar__controllers {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.sidebar .sidebar__controllers .sc_wrapper {
+    width: 100%;
+    position: relative;
+    margin: 0.75rem;
+    text-align: center;
+}
+
+.sc_wrapper .sc_btn {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: none;
+    font-size: 1.35rem;
+    font-weight: 700;
+    padding: 1.25rem 1.25rem;
+    text-decoration: none;
+}
+
+.sc_wrapper .sc_btn.clicked {
+    border-bottom: 0.25rem solid #414141;
+    padding-bottom: 1.00rem;
+}
+
+.sidebar .sidebar__value {
+    position: relative;
+    margin-top: 0.50rem;
+    max-height: 70vh;
+    overflow: auto;
+}
+
+/* width */
+.sidebar .sidebar__value::-webkit-scrollbar {
+  width: 0.50rem;
+}
+
+/* Track */
+.sidebar .sidebar__value::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.sidebar .sidebar__value::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+.sidebar .sidebar__value::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.sidebar .sv_wrapper {
+    display: none;
+}
+
+.sidebar .sv_wrapper.clicked {
+    display: block;
+}
+
+.sidebar .sv_wrapper .sv_content {
+    position: relative;
+    margin-bottom: 0.50rem;
+    position: relative;
+}
+
+.sidebar .sv_media {
+    width: 100%;
+    border: 1px solid;
+    display: contents;
+}
+
+.sidebar .sv_media img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}
+
+.sidebar .sv_infos {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+}
+
+.sidebar .sv_infos span {
+    font-weight: 900;
+    font-size: 1.95rem;
+    color: #ffffff !important;
+    text-shadow: -1px 1px 5px #414141;
+}
+
+.navbar__extension {
+    display: none;
+    position: absolute;
+    bottom: -6rem;
+    left: 0;
+    width: 100%;
+    transition: all 0.25s ease;
+}
+
+.navbar__extension.hidden-mobile {
+    display: none;
+}
+
+button#close-glb-dropdown {
+    border: none;
+    background: transparent;
+    font-size: 1.45rem;
+    width: 100%;
+    text-align: center;
+    padding: 0.25rem 0.5rem 0rem;
+}
+
+@media (max-width: 767.98px) {
+  .navbar__extension {
+    display: block;  
+  }
+
+  .navbar__extension ul.list-menu.list-menu--inline {
+    width: 100%;
+    align-content: center;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .navbar__extension ul.list-menu.list-menu--inline a {
+    font-size: 1.45rem;
+    border-left: 0.5px solid #fff4;
+    border-right: 0.5px solid #fff4;
+    padding: .5rem 1.5rem;
+    margin: 1.5rem 2rem;
+  }
+  
+  button#header__menu-mobile {
+    display: block;
+  }
+  
+  .sidebar {
+    width: 100%;
+  }
+
+  .sidebar .sidebar__value {
+    max-height: unset;
+    overflow: unset;
+  }
+}

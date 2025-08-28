@@ -1,0 +1,207 @@
+{% comment %}
+  Newsletter Popup Section with Banner and Animations
+{% endcomment %}
+
+<style>
+  #newsletter-popup {
+    display: none;
+    position: fixed;
+    top: 2.5%;
+    left: 50%;
+    transform: translateX(100%); /* Start from right */
+    background: white;
+    padding: 0;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    z-index: 9999;
+    max-width: 400px;
+    width: 90%;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    opacity: 0;
+    align-self: anchor-center;
+  }
+
+  #newsletter-popup.show {
+    transform: translateX(-50%); /* Move to center */
+    opacity: 1;
+  }
+
+  #newsletter-popup.hide {
+    transform: translateX(100%); /* Move back to right */
+    opacity: 0;
+  }
+
+  #newsletter-success {
+    font-weight: bold;
+    background-color: #f0fff0;
+    border: 1px solid #c0eac0;
+    border-radius: 6px;
+  }
+</style>
+
+<div id="newsletter-popup">
+  {% if section.settings.banner_image != blank %}
+    <img
+      src="{{ section.settings.banner_image | image_url: width: 800, format: 'webp' }}"
+      alt="Banner"
+      style="width:100%; height:auto;"
+    >
+  {% endif %}
+
+  <div style="padding:2rem;">
+    <p style="margin: 0rem 0rem 0.5rem 0rem;text-align: center;font-size: 2.75rem;line-height: 1; ">{{ section.settings.popup_heading }}</p>
+    <p style="margin-bottom:1.5rem; text-align: center; ">{{ section.settings.popup_subtext }}</p>
+    
+    <form id="newsletter-form" method="POST" action="/contact#Newsletter" target="hidden_iframe" accept-charset="UTF-8">
+      <input type="hidden" name="form_type" value="customer">
+      <input type="hidden" name="utf8" value="✓">
+      <input
+        type="email"
+        name="contact[email]"
+        placeholder="Your email"
+        required
+        style="width:100%; padding:0.7rem; margin-bottom:1rem; border:1px solid #ccc; border-radius:5px;"
+      >
+      <button
+        type="submit"
+        style="width:100%; padding:0.7rem; background:#000; color:#fff; border:none; border-radius:5px;"
+      >
+        {{ section.settings.button_text }}
+      </button>
+    </form>
+    
+    <iframe name="hidden_iframe" style="display:none;" onload="formSubmitted()"></iframe>
+    
+    <div id="newsletter-success" style="display:none; text-align:center; margin-top:1rem; color:green;">
+      ✅ Thank you for subscribing!
+    </div>
+
+    <button
+      id="close-popup"
+      style="
+        border: 0px;
+        padding: 1.25rem 1.5rem;
+        background: #0002;
+        position: fixed;
+        top: 0;
+        right: 0;
+        border-radius: 100%;
+        margin: 1rem 1rem 0rem 0rem;
+      "
+    >
+      X
+    </button>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.location.pathname === '/' || window.location.pathname === '/index') {
+      var popup = document.getElementById('newsletter-popup');
+      var showEveryTime = {{ section.settings.show_every_time | json }};
+      var popupSeen = document.cookie.split('; ').find(row => row.startsWith('popup_seen='));
+
+      function openPopup() {
+        popup.style.display = 'block';
+        setTimeout(function() {
+          popup.classList.add('show');
+        }, 50);
+        if (!showEveryTime) {
+          document.cookie = "popup_seen=true; path=/; max-age=604800"; // 7 days
+        }
+      }
+
+      function closePopup() {
+        popup.classList.remove('show');
+        popup.classList.add('hide');
+        setTimeout(function() {
+          popup.style.display = 'none';
+          popup.classList.remove('hide');
+        }, 500);
+      }
+
+      if (!popupSeen || showEveryTime) {
+        setTimeout(openPopup, {{ section.settings.delay_time | times: 1000 }});
+      }
+
+      document.getElementById('close-popup').addEventListener('click', closePopup);
+
+      // 🔥 Close when clicking outside
+      document.addEventListener('click', function(event) {
+        if (popup.style.display === 'block' && !popup.contains(event.target)) {
+          closePopup();
+        }
+      });
+    }
+  });
+</script>
+
+<script>
+  function formSubmitted() {
+    const form = document.getElementById('newsletter-form');
+    const success = document.getElementById('newsletter-success');
+
+    // Prevent triggering on initial iframe load
+    if (form.style.display !== 'none') {
+      form.style.display = 'none';
+      success.style.display = 'block';
+
+      // Optional: auto-close popup after 3s
+      setTimeout(() => {
+        document.getElementById('close-popup').click();
+      }, 3000);
+    }
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Newsletter Popup",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_every_time",
+      "label": "Show every time user visits?",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Banner Image"
+    },
+    {
+      "type": "text",
+      "id": "popup_heading",
+      "label": "Popup Heading",
+      "default": "Join our Newsletter!"
+    },
+    {
+      "type": "text",
+      "id": "popup_subtext",
+      "label": "Popup Subtext",
+      "default": "Subscribe to get special offers and updates."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Subscribe"
+    },
+    {
+      "type": "range",
+      "id": "delay_time",
+      "label": "Popup Delay (seconds)",
+      "min": 1,
+      "max": 30,
+      "step": 1,
+      "default": 5
+    }
+  ],
+  "presets": [
+    {
+      "name": "Newsletter Popup with Banner and Animation"
+    }
+  ]
+}
+{% endschema %}

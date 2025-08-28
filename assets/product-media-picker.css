@@ -1,0 +1,145 @@
+.new-picker-media {
+  position: relative;
+}
+
+.new-picker-media img {
+  width: 100%;
+}
+
+@media screen and (max-width: 749px) {
+  .main-media-ctl {
+    display: none !important;
+    opacity: 0;
+  }
+
+  .new-picker-media img {
+    max-height: 85%;
+  }
+}
+
+label.button-label {
+    padding: 0.75rem 1.50rem;
+    background: #f3f3f3;
+    margin-right: 1rem;
+    border-radius: 0.45rem;
+    border: 1px solid #c9c9c9;
+}
+
+.img-viewer-full {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: #fff;
+    z-index: 99;
+    text-align: center;
+    display: none;
+}
+
+.img-viewer-full button {
+    position: fixed;
+    top: 2.5rem;
+    right: 2.5rem;
+    padding: 1rem 1.5rem;
+    background: transparent;
+    color: #5d5d5d;
+    border: 1px solid #5d5d5d;
+    z-index: 100;
+}
+
+.img-viewer-full img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.img-viewer-full.active{
+  display: block;
+  overflow: auto;
+}
+
+.mm-item-ctl {
+    max-width: 160px;
+}
+
+.mm-item-ctl.slick-current {
+    border: 2px solid #444;
+    max-width: 160px;
+}
+
+.slick-dots {
+    position: absolute;
+    bottom: -25px;
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin: 0 0 2.5rem 0;
+    list-style: none;
+    text-align: center;
+}
+
+.slick-dots li {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin: 0 2.5px;
+    padding: 0;
+    cursor: pointer;
+}
+
+.slick-dots li button {
+    font-size: 0;
+    line-height: 0;
+    display: block;
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+    cursor: pointer;
+    color: transparent;
+    border: 0;
+    outline: none;
+    background: transparent;
+}
+
+.slick-dots li.slick-active button:before {
+    opacity: .75;
+    color: black;
+}
+
+.slick-dots li button:before {
+    font-family: 'slick';
+    font-size: 3rem;
+    line-height: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    content: '•';
+    text-align: center;
+    opacity: .25;
+    color: black;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+button.mm-prevnext.mm-next {
+    right: 10px;
+}
+
+button.mm-prevnext.mm-prev {
+    left: 10px;
+}
+
+button.mm-prevnext {
+    position: absolute;
+    top: 45%;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1.75rem;
+    color: #4447;
+    background: #ccc2;
+    border-radius: 100%;
+}

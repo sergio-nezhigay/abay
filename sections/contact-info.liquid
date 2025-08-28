@@ -1,0 +1,170 @@
+{% schema %}
+{
+  "name": "Contact Info + Form",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "We're Here to Help"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Reach out with any questions. Our support team is happy to assist you."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_form",
+      "label": "Show contact form",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "name_label",
+      "label": "Name field label",
+      "default": "Name"
+    },
+    {
+      "type": "text",
+      "id": "email_label",
+      "label": "Email field label",
+      "default": "Email *"
+    },
+    {
+      "type": "text",
+      "id": "phone_label",
+      "label": "Phone field label",
+      "default": "Phone number"
+    },
+    {
+      "type": "text",
+      "id": "message_label",
+      "label": "Message field label",
+      "default": "Comment"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Send button text",
+      "default": "Send"
+    },
+    {
+      "type": "text",
+      "id": "company_name",
+      "label": "Company name",
+      "default": "ABAY.com"
+    },
+    {
+      "type": "text",
+      "id": "hours",
+      "label": "Support hours",
+      "default": "Sunday – Friday, 10 AM – 6 PM GST"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Support email",
+      "default": "support@abay.com"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Support phone number",
+      "default": "+971 50 123 4567"
+    },
+    {
+      "type": "textarea",
+      "id": "address",
+      "label": "Business address",
+      "default": "Dubai Design District, Building 8\nDubai, UAE"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact Info + Form"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="page-width" style="padding: 4rem 0;">
+  {% if section.settings.heading != blank %}
+    <h1 class="h1 text-center">{{ section.settings.heading }}</h1>
+  {% endif %}
+  {% if section.settings.subheading != blank %}
+    <p class="subtitle text-center" style="margin-bottom: 2rem;">
+      {{ section.settings.subheading }}
+    </p>
+  {% endif %}
+
+  {% if section.settings.show_form %}
+    {% form 'contact' %}
+      <div class="contact-form">
+        <div class="field-grid">
+          <input type="text" name="contact[name]" placeholder="{{ section.settings.name_label }}" required>
+          <input type="email" name="contact[email]" placeholder="{{ section.settings.email_label }}" required>
+        </div>
+        <input type="tel" name="contact[phone]" placeholder="{{ section.settings.phone_label }}">
+        <textarea rows="6" name="contact[body]" placeholder="{{ section.settings.message_label }}" required></textarea>
+        <button type="submit" class="button" style="margin-top: 1rem;">
+          {{ section.settings.button_label }}
+        </button>
+      </div>
+    {% endform %}
+  {% endif %}
+
+  <div class="contact-details" style="margin-top: 4rem; text-align: center;">
+    {% if section.settings.company_name != blank %}
+      <p>
+        <strong>{{ section.settings.company_name }}</strong>
+      </p>
+    {% endif %}
+    {% if section.settings.hours != blank %}
+      <p>{{ section.settings.hours }}</p>
+    {% endif %}
+    {% if section.settings.email != blank %}
+      <p>
+        Email: <a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a>
+      </p>
+    {% endif %}
+    {% if section.settings.phone != blank %}
+      <p>Phone: {{ section.settings.phone }}</p>
+    {% endif %}
+    {% if section.settings.address != blank %}
+      <p>{{ section.settings.address | newline_to_br }}</p>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    font-family: inherit;
+    box-sizing: border-box;
+  }
+
+  .field-grid {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+
+  .field-grid input {
+    flex: 1 1 48%;
+  }
+
+  @media (max-width: 768px) {
+    .field-grid input {
+      flex: 1 1 100%;
+    }
+  }
+</style>

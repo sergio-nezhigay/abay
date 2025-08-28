@@ -1,0 +1,29 @@
+{%- comment -%}
+  Dedicated section that only renders cart inventory JSON.
+  You can re-render this section with ?section_id=cart-stock-json
+{%- endcomment -%}
+
+<div class="visually-hidden" aria-hidden="true">
+  <script type="application/json" id="inv-json-data" data-cart-stock>
+  {
+  {%- for item in cart.items -%}
+    "{{ item.variant_id }}": {
+      "qty": {{ item.variant.inventory_quantity | default: 0 | json }},
+      "policy": {{ item.variant.inventory_policy | json }},
+      "managed": {{ item.variant.inventory_management | json }},
+      "available": {{ item.variant.available | json }}
+    }{%- unless forloop.last -%},{%- endunless -%}
+  {%- endfor -%}
+  }
+  </script>
+</div>
+
+{% schema %}
+{
+  "name": "Cart stock JSON",
+  "settings": [],
+  "presets": [
+    { "name": "Cart stock JSON" }
+  ]
+}
+{% endschema %}

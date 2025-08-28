@@ -1,0 +1,235 @@
+@font-face {
+  font-family: 'PlayfairDisplaySC-BoldItalic'; /* You can name it anything */
+  src: url('https://cdn.shopify.com/s/files/1/0726/7562/3155/files/PlayfairDisplaySC-BoldItalic.woff2?v=1744195876') format('woff2');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'PlayfairDisplaySC-Italic'; /* You can name it anything */
+  src: url('https://cdn.shopify.com/s/files/1/0726/7562/3155/files/PlayfairDisplaySC-Italic.woff2?v=1744195876') format('woff2');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'PlayfairDisplaySC-Bold'; /* You can name it anything */
+  src: url('https://cdn.shopify.com/s/files/1/0726/7562/3155/files/PlayfairDisplaySC-Bold.woff2?v=1744195876') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PlayfairDisplaySC-Black'; /* You can name it anything */
+  src: url('https://cdn.shopify.com/s/files/1/0726/7562/3155/files/PlayfairDisplaySC-Black.woff2?v=1744195876') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PlayfairDisplaySC-BlackItalic'; /* You can name it anything */
+  src: url('https://cdn.shopify.com/s/files/1/0726/7562/3155/files/PlayfairDisplaySC-BlackItalic.woff2?v=1744195876') format('woff2');
+  font-weight: 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'PlayfairDisplaySC-Bold'; /* You can name it anything */
+  src: url('https://cdn.shopify.com/s/files/1/0726/7562/3155/files/PlayfairDisplaySC-Bold.woff2?v=1744195876') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PlayfairDisplaySC-Regular'; /* You can name it anything */
+  src: url('https://cdn.shopify.com/s/files/1/0726/7562/3155/files/PlayfairDisplaySC-Regular.woff2?v=1744195876') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Oswald';
+  src: url('https://cdn.shopify.com/s/files/1/0726/7562/3155/files/Oswald-Regular.ttf?v=1748420984') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Oswald';
+  src: url('https://cdn.shopify.com/s/files/1/0726/7562/3155/files/Oswald-Light.ttf?v=1748420977') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Oswald';
+  src: url('https://cdn.shopify.com/s/files/1/0726/7562/3155/files/Oswald-Medium.ttf?v=1748420980') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Oswald';
+  src: url('https://cdn.shopify.com/s/files/1/0726/7562/3155/files/Oswald-Bold.ttf?v=1748420949') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Oswald';
+  src: url('https://cdn.shopify.com/s/files/1/0726/7562/3155/files/Oswald-SemiBold.ttf?v=1748420986') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Oswald';
+  src: url('https://cdn.shopify.com/s/files/1/0726/7562/3155/files/Oswald-ExtraLight.ttf?v=1748420973') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
+
+#shopify-section-template--19350112436467__collection_list_7k4KY6 h3.card__heading {
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    font-size: 2.75rem;
+    color: #fff;
+    text-transform: uppercase;
+    transform: translateY(-200%);
+    text-align: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+.card__heading .full-unstyled-link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+}
+
+#shopify-section-template--19350112436467__collection_list_7k4KY6 .card-information {
+  height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.stretched-link::after {
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    z-index: 1;
+    content: "";
+}
+
+.position-relative {
+  position: relative !important;
+}
+
+.content-custom-container {
+   padding: 1.75rem;
+}
+
+.content-custom-container a {
+  position: absolute;
+  top: -0.75rem;
+  right: 1rem;
+  padding: 0.5rem 1.5rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 13px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+}
+
+.content-custom-container a:after {
+  content: " →";
+  margin-left: 4px;
+  transition: margin-left 0.3s ease;
+}
+
+.content-custom-container a:hover:after {
+  margin-left: 8px;
+}
+
+/* EVEN style — light text */
+.content-custom-container.even a {
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.content-custom-container.even a:hover {
+  background-color: #000000;
+  color: #ffffff;
+  border-color: #000;
+}
+
+/* ODD style — dark background variant */
+.content-custom-container.odd a {
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid #ffffff44;
+  box-shadow: 0 2px 6px rgba(255, 255, 255, 0.15);
+}
+
+.content-custom-container.odd a:hover {
+  background-color: transparent;
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+@media screen and (max-width: 767.98px) {
+  #shopify-section-template--19350112436467__collection_list_7k4KY6 h3.card__heading {
+    transform: translate(0%, -350%);
+    font-size: 2.95rem;
+  }
+  #shopify-section-template--19350112436467__collection_list_7k4KY6 .card-information {
+    height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .section-collection-list .collection-list:not(.slider) {
+    padding-left: 0.15rem !important;
+    padding-right: 0.15rem !important;
+  }
+}
+
+@media screen and (max-width: 991.98px) {
+  #shopify-section-template--19350112436467__collection_list_7k4KY6 .collection-list-wrapper.page-width {
+    max-width: 100% !important;
+    padding: 1rem !important;
+  }
+  #shopify-section-template--19350112436467__collection_list_7k4KY6 .card-information {
+    height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  #shopify-section-template--19350112436467__collection_list_7k4KY6 .collection-list-wrapper .card__information {
+    height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  #shopify-section-template--19350112436467__collection_list_7k4KY6 h3.card__heading {
+    transform: translate(0%,-350%);
+  }
+}
+
+@media screen and (max-width: 749px) {
+    .footer__content-top {
+        padding-bottom: 1rem !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+}

@@ -1,0 +1,308 @@
+<style>
+  .product-popup-modal__content-info {
+    padding-right: 1rem;
+  }
+
+  .size-chart-content {
+    position: relative;
+  }
+
+  .size-chart-content .sc-header {
+    font-family: oswald, sans-serif;
+    font-weight: normal;
+    margin-bottom: 1.25rem;
+    margin-left: 1.25rem;
+  }
+
+  .size-chart-content .sc-body {
+    padding: 0rem 2rem 1.5rem 2rem;
+  }
+
+  .size-chart-content .sc-tbl {
+    border-collapse: collapse;
+    min-width: 285px;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .size-chart-content .sc-body table th {
+    font-weight: normal;
+    background: #4445;
+    color: #fff;
+    font-size: 1.25rem;
+  }
+
+  .size-chart-content .sc-body table td {
+    font-size: 1.5rem;
+    text-align: center;
+    min-width: 57.5px;
+    width: 20%;
+  }
+
+  button.sc-btn {
+    border: 1px solid #4445;
+    background: #fff;
+    padding: 1rem;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  button.sc-btn.active {
+    background: #4445;
+  }
+</style>
+<div class="size-chart-content">
+  <div
+    style="
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    "
+  >
+    <p style="margin-right: auto;">Please refer to our standard size chart below:</p>
+    <button class="sc-btn active" style="margin-left: 0.75rem; " data-value="CM">CM</button>
+    <button class="sc-btn" style="margin-left: 0.75rem; " data-value="INCH">INCH</button>
+  </div>
+
+  {% if product.metafields.custom.size_chart != blank %}
+    {{ product.metafields.custom.size_chart | metafield_tag }}
+  {% else %}
+    {% for current_collection in product.collections %}
+      {% if current_collection.title == 'Plains' %}
+        <div class="sc-content" data-value="">
+          <div class="sc-header">T-shirt Size Chart</div>
+          <div class="sc-body">
+            <table class="sc-tbl" border="1">
+              <thead>
+                <th>SIZE</th>
+                <th>CHEST</th>
+                <th>LENGTH</th>
+                <th>SLEEVE</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 20%; ">S</td>
+                  <td class="sc-value-num">55cm</td>
+                  <td class="sc-value-num">74cm</td>
+                  <td class="sc-value-num">23cm</td>
+                </tr>
+                <tr>
+                  <td style="width: 20%; ">M</td>
+                  <td class="sc-value-num">57cm</td>
+                  <td class="sc-value-num">76cm</td>
+                  <td class="sc-value-num">23cm</td>
+                </tr>
+                <tr>
+                  <td style="width: 20%; ">L</td>
+                  <td class="sc-value-num">58cm</td>
+                  <td class="sc-value-num">77cm</td>
+                  <td class="sc-value-num">24cm</td>
+                </tr>
+                <tr>
+                  <td style="width: 20%; ">XL</td>
+                  <td class="sc-value-num">61cm</td>
+                  <td class="sc-value-num">78cm</td>
+                  <td class="sc-value-num">25cm</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="sc-content" data-value="">
+          <div class="sc-header">Hoodie Size Chart</div>
+          <div class="sc-body">
+            <table class="sc-tbl" border="1">
+              <thead>
+                <th>SIZE</th>
+                <th>CHEST</th>
+                <th>LENGTH</th>
+                <th>SLEEVE</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 20%; ">S</td>
+                  <td class="sc-value-num">51cm</td>
+                  <td class="sc-value-num">68cm</td>
+                  <td class="sc-value-num">85cm</td>
+                </tr>
+                <tr>
+                  <td style="width: 20%; ">M</td>
+                  <td class="sc-value-num">56cm</td>
+                  <td class="sc-value-num">71cm</td>
+                  <td class="sc-value-num">87cm</td>
+                </tr>
+                <tr>
+                  <td style="width: 20%; ">L</td>
+                  <td class="sc-value-num">61cm</td>
+                  <td class="sc-value-num">73cm</td>
+                  <td class="sc-value-num">90cm</td>
+                </tr>
+                <tr>
+                  <td style="width: 20%; ">XL</td>
+                  <td class="sc-value-num">66cm</td>
+                  <td class="sc-value-num">76cm</td>
+                  <td class="sc-value-num">92cm</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="sc-content" data-value="">
+          <div class="sc-header">Jogger Size Chart</div>
+          <div class="sc-body">
+            <table class="sc-tbl" border="1">
+              <thead>
+                <th>SIZE</th>
+                <th>WAIST</th>
+                <th>LENGTH</th>
+                <th>HIP</th>
+                <th>INSEAM</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 20%; ">S</td>
+                  <td class="sc-value-num">80cm</td>
+                  <td class="sc-value-num">96cm</td>
+                  <td class="sc-value-num">105cm</td>
+                  <td class="sc-value-num">72.5cm</td>
+                </tr>
+                <tr>
+                  <td style="width: 20%; ">M</td>
+                  <td class="sc-value-num">85cm</td>
+                  <td class="sc-value-num">97cm</td>
+                  <td class="sc-value-num">110cm</td>
+                  <td class="sc-value-num">72.5cm</td>
+                </tr>
+                <tr>
+                  <td style="width: 20%; ">S</td>
+                  <td class="sc-value-num">90cm</td>
+                  <td class="sc-value-num">98cm</td>
+                  <td class="sc-value-num">115cm</td>
+                  <td class="sc-value-num">72.5cm</td>
+                </tr>
+                <tr>
+                  <td style="width: 20%; ">S</td>
+                  <td class="sc-value-num">95cm</td>
+                  <td class="sc-value-num">99cm</td>
+                  <td class="sc-value-num">120cm</td>
+                  <td class="sc-value-num">72.5cm</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      {% endif %}
+
+      {% if current_collection.title == 'Art to Wear' %}
+        <div class="sc-content" data-value="">
+          <div class="sc-header">T-shirt Size Chart</div>
+          <div class="sc-body">
+            <table class="sc-tbl" border="1">
+              <thead>
+                <th>SIZE</th>
+                <th>CHEST</th>
+                <th>LENGTH</th>
+                <th>SLEEVE</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 20%; ">S</td>
+                  <td class="sc-value-num">55cm</td>
+                  <td class="sc-value-num">74cm</td>
+                  <td class="sc-value-num">23cm</td>
+                </tr>
+                <tr>
+                  <td style="width: 20%; ">M</td>
+                  <td class="sc-value-num">57cm</td>
+                  <td class="sc-value-num">76cm</td>
+                  <td class="sc-value-num">23cm</td>
+                </tr>
+                <tr>
+                  <td style="width: 20%; ">L</td>
+                  <td class="sc-value-num">58cm</td>
+                  <td class="sc-value-num">77cm</td>
+                  <td class="sc-value-num">24cm</td>
+                </tr>
+                <tr>
+                  <td style="width: 20%; ">XL</td>
+                  <td class="sc-value-num">61cm</td>
+                  <td class="sc-value-num">78cm</td>
+                  <td class="sc-value-num">25cm</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      {% endif %}
+
+      {% if current_collection.title == 'Abaya' %}
+        <div class="sc-content" data-value="">
+          <div class="sc-header">Abaya Size Chart</div>
+          <div class="sc-body">
+            <table class="sc-tbl" border="1">
+              <thead>
+                <th>SIZE</th>
+                <th>LENGTH</th>
+                <th>CHEST</th>
+                <th>HAND</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 20%; ">XS</td>
+                  <td class="sc-value-num">132.08cm</td>
+                  <td class="sc-value-num">134.62cm</td>
+                  <td class="sc-value-num">162.56cm</td>
+                </tr>
+                <tr>
+                  <td style="width: 20%; ">S</td>
+                  <td class="sc-value-num">137.16cm</td>
+                  <td class="sc-value-num">142.24cm</td>
+                  <td class="sc-value-num">170.18cm</td>
+                </tr>
+                <tr>
+                  <td style="width: 20%; ">M</td>
+                  <td class="sc-value-num">142.24cm</td>
+                  <td class="sc-value-num">152.40cm</td>
+                  <td class="sc-value-num">175.26cm</td>
+                </tr>
+                <tr>
+                  <td style="width: 20%; ">L</td>
+                  <td class="sc-value-num">147.32cm</td>
+                  <td class="sc-value-num">157.48cm</td>
+                  <td class="sc-value-num">180.34cm</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+</div>
+
+{% javascript %}
+  $(document).ready(function() {
+      $(document).on("click", ".sc-btn", function() {
+        if (!$(this).hasClass("active")) {
+          $(".sc-btn").removeClass("active")
+          $(this).addClass("active")
+          let unit = $(this).attr("data-value")
+
+          $(".sc-tbl .sc-value-num").each(function() {
+            let datanum = $(this).text().trim()
+            let newdatanum = 0;
+            if (unit == "CM") {
+              datanum = datanum.replace("cm", "")
+              newdatanum = parseInt(datanum) * 2.54;
+              $(this).text(newdatanum.toFixed(0) + "cm")
+            } else {
+              datanum = datanum.replace("inch", "")
+              newdatanum = parseInt(datanum) / 2.54;
+              $(this).text(newdatanum.toFixed(0) + "inch")
+            }
+
+          })
+        }
+      })
+  })
+{% endjavascript %}

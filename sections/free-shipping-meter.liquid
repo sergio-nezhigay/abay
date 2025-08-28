@@ -1,0 +1,75 @@
+{% schema %}
+{
+  "name": "Free Shipping Meter",
+  "settings": [
+    {
+      "type": "number",
+      "id": "threshold",
+      "label": "Free Shipping Threshold (USD)",
+      "default": 200,
+    },
+    {
+      "type": "text",
+      "id": "message_complete",
+      "label": "Message when threshold reached",
+      "default": "Congratulations! You have Free Shipping!"
+    },
+    {
+      "type": "text",
+      "id": "message_remaining",
+      "label": "Message when under threshold",
+      "default": "Only {{ amount }} away from Free Shipping!"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Free Shipping Meter"
+    }
+  ]
+}
+{% endschema %}
+
+<div id="free-shipping-meter" style="margin-bottom: 20px;">
+  <p id="free-shipping-text" style="margin-bottom: 8px;"></p>
+  <div style="background: #eee; border-radius: 5px; height: 12px; overflow: hidden;">
+    <div id="free-shipping-fill" style="background: #4CAF50; height: 12px; width: 0%; transition: width 0.3s;"></div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const thresholdUSD = {{ section.settings.threshold }};
+    const messageComplete = {{ section.settings.message_complete | json }};
+    const messageTemplate = {{ section.settings.message_remaining | json }};
+
+    function formatCurrency(amount) {
+      return new Intl.NumberFormat(undefined, { style: 'currency', currency: Shopify.currency.active || 'USD' }).format(amount);
+    }
+
+    function updateMeter(cart) {
+      const total = cart.total_price / 100;
+      const remaining = Math.max(0, thresholdUSD - total);
+      const percent = Math.min((total / thresholdUSD) * 100, 100);
+
+      const textEl = document.getElementById("free-shipping-text");
+      const fillEl = document.getElementById("free-shipping-fill");
+
+      if (remaining <= 0) {
+        textEl.textContent = messageComplete;
+      } else {
+        const converted = window.Beast && Beast.convert ? Beast.convert(remaining, 'USD') : formatCurrency(remaining);
+        textEl.textContent = messageTemplate.replace('{{ amount }}', converted);
+      }
+
+      fillEl.style.width = percent + "%";
+    }
+
+    fetch('/cart.js')
+      .then(res => res.json())
+      .then(updateMeter);
+
+    document.addEventListener('cart:refresh', function () {
+      fetch('/cart.js').then(res => res.json()).then(updateMeter);
+    });
+  });
+</script>

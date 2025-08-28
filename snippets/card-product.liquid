@@ -1,0 +1,343 @@
+{% comment %}
+  Refactored custom product card supporting:
+  - dynamic swatch color switching
+  - variant media and URL update on hover/click
+  - fallback to Shopify admin settings (show_secondary_image, show_vendor, etc.)
+{% endcomment %}
+
+{%- assign global_colors = shop.metafields.custom.color_swatches.value | parse_json -%}
+{%- assign rendered_colors = ',' -%}
+{%- assign swatch_limit = 4 -%}
+{%- assign swatch_count = 0 -%}
+{%- assign total_unique = 0 -%}
+
+<div class="custom-card-wrapper" title="{{ card_product.title | escape }}">
+  <div class="custom-card-media-box">
+    <a
+      id="custom-card-link-{{ section.id }}-{{ card_product.id }}"
+      href="{{ card_product.url }}"
+      class="custom-card-link full-unstyled-link"
+      data-base-url="{{ card_product.url }}"
+    >
+      {% if card_product.available == false %}
+        <div class="prd-soldout">
+          <div class="prd-text">Sold-out</div>
+        </div>
+      {% endif %}
+
+      {% if card_product.compare_at_price > card_product.price %}
+        <div class="prd-sale">
+          <div class="prd-text">
+            {% if card_product.metafields.custom.product_on_sale != blank %}
+              {{ card_product.metafields.custom.product_on_sale }}
+            {% else %}
+              On Sale
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+      <img
+        id="custom-img-{{ section.id }}-{{ card_product.id }}"
+        class="custom-card-img"
+        src="{{ card_product.featured_media | image_url: width: 500, format: 'webp' }}"
+        alt="{{ card_product.title | escape }}"
+        loading="lazy"
+        width="auto"
+        height="auto"
+      >
+      {% if card_product.media[1] %}
+        <img
+          id="custom-card-img-2-{{ section.id }}-{{ card_product.id }}"
+          class="custom-card-img-2"
+          src="{{ card_product.media[1] | image_url: width: 500, format: 'webp' }}"
+          alt="{{ card_product.title | escape }} – hover image"
+          width="auto"
+          height="auto"
+        >
+      {% endif %}
+    </a>
+
+    {%- if settings.enable_quick_buy and card_product.available -%}
+      <div class="quick-add-btns">
+        <div class="qab-wrapper">
+          <button id="qab-btn-dt" class="card-quick-add dt" data-product-id="{{ card_product.id }}">
+            ADD TO CART
+          </button>
+          <button id="qab-btn-mb" class="card-quick-add mb" data-product-id="{{ card_product.id }}">
+            <span class="svg-wrapper">{{ 'icon-cart.svg' | inline_asset_content }}</span>
+          </button>
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+
+  <div class="custom-swatch-container responsive-limit" data-product-id="{{ card_product.id }}" data-default-variant-id="{{ card_product.selected_or_first_available_variant.id }}">
+    {%- assign swatch_index = 0 -%}
+    
+    {% for variant in card_product.variants %}
+      {% assign color_value = variant.option1 | strip %}
+      {% assign color_check = ',' | append: color_value | append: ',' %}
+
+      {% unless rendered_colors contains color_check %}
+        {% assign swatch_color = '#cccccc' %}
+
+        {% for color_entry in global_colors %}
+          {% if color_entry.name == color_value %}
+            {% assign swatch_color = color_entry.value %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+
+        {% if swatch_color != '' and variant.featured_media %}
+          {% assign total_unique = total_unique | plus: 1 %}
+          {% if swatch_count < swatch_limit %}
+            <button
+              type="button"
+              class="custom-swatch-item{% if swatch_index == 0 %} active{% endif %}"
+              style="background-color: {{ swatch_color }};" 
+              data-variant-id="{{ variant.id }}" 
+              data-variant-url="{{ variant.url }}" 
+              data-media-src="{{ variant.featured_media | image_url: width: 850, format: 'webp' }}"
+              title="{{ color_value }}"
+              aria-label="{{ color_value }}"
+              data-section-id="{{ section.id }}"
+              onclick="customSwapVariant('{{ card_product.id }}', this)"
+              onmouseover="customSwapVariant('{{ card_product.id }}', this)"
+            ></button>
+            {% assign swatch_count = swatch_count | plus: 1 %}
+            {% assign swatch_index = swatch_index | plus: 1 %}
+          {% endif %}
+          {% assign rendered_colors = rendered_colors | append: color_value | append: ',' %}
+        {% endif %}
+      {% endunless %}
+    {% endfor %}
+
+
+    {% if total_unique > swatch_limit %}
+      <a href="{{ card_product.url }}" style="display: contents;">
+        <div class="custom-swatch-item custom-swatch-overflow" id="xtra-swatch-{{ card_product.id }}">
+          +{{ total_unique | minus: swatch_limit }}
+        </div>
+      </a>
+    {% endif %}
+  </div>
+
+  <div class="custom-title-wrapper">
+    <div class="custom-title-text">
+      <a href="{{ card_product.url }}" style="{% if card_product.available == false %} color: #adadad; text-decoration: line-through; {% else %} color: unset; {% endif %}">{{ card_product.title | escape }}</a>
+    </div>
+    {% if card_product.compare_at_price > card_product.price %}
+      <div class="custom-price">
+        <div class="sale-price">{{ card_product.price | money }}</div>
+        <div class="compare-at-price" style="text-decoration: line-through;font-size: 1.05rem;text-align: right;color: #adadad;">{{ card_product.compare_at_price | money }}</div>
+      </div>
+    {% else %}
+      <div class="custom-price">{{ card_product.price | money }}</div>
+    {% endif %}
+
+  </div>
+</div>
+
+<style>
+  .prd-soldout {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #dbdbdb30;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .prd-soldout .prd-text {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 1.15rem;
+    padding: 1rem;
+    color: #444;
+  }
+
+  .prd-sale {
+    position: absolute;
+    display: flex;
+    align-content: flex-start;
+    justify-content: flex-end;
+    align-items: flex-start;
+    top: 5px;
+    right: -5;
+    width: 100%;
+  }
+
+  .prd-sale .prd-text {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 1.15rem;
+    padding: 0.75rem;
+    background-color: #000;
+    color: #fff !important;
+  }
+  
+  .custom-card-wrapper {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    height: 100%;
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 0 5px;
+    box-sizing: border-box;
+  }
+
+  .custom-card-media-box {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #ffffff;
+    aspect-ratio: 2/3;
+  }
+
+  .custom-card-media-box img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: fill;
+    display: block;
+    transition: all 0.25s ease;
+    margin: 0 auto;
+  }
+
+  .custom-card-img-2 {
+    display: none !important;
+  }
+
+  .custom-card-media-box:hover .custom-card-img {
+    display: none;
+  }
+
+  .custom-card-media-box:hover .custom-card-img-2 {
+    display: block !important;
+  }
+
+  .custom-swatch-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 6px;
+    padding: 8px 0 10px;
+    max-height: 4.5rem;
+    overflow: hidden;
+  }
+
+  .custom-swatch-item {
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .custom-swatch-item:hover {
+    transform: scale(1.05);
+  }
+
+  .custom-swatch-item.active {
+    border: 2px solid #333;
+    box-shadow: 0 0 0 1.5px #ffffff inset;
+  }
+
+  .custom-swatch-overflow {
+    font-size: 0.9rem;
+    padding: 3px 6px;
+    border-radius: 8px;
+    background: #f0f0f0;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .custom-title-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0.5rem;
+    min-height: 5.4rem;
+    text-align: center;
+  }
+
+  .custom-title-text {
+    font-weight: 500;
+    font-size: 1.35rem;
+    line-height: 1.4;
+    max-width: 85%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0 auto;
+  }
+
+  .custom-price {
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin-top: 4px;
+  }
+
+  .custom-card-media-box .full-unstyled-link {
+    height: 100%;
+    display: contents;
+  }
+
+  @media (max-width: 1366px) {
+    
+  }
+
+  @media (max-width: 1024px) {
+    
+  }
+
+  @media (max-width: 749px) {
+    .custom-title-text {
+      max-width: 100% !important;
+      white-space: normal !important;
+      overflow: unset !important;
+      text-overflow: unset !important;
+    }
+
+    .responsive-limit .custom-swatch-item:nth-child(n+4) {
+      display: none !important;
+    }
+
+    .responsive-limit .custom-swatch-overflow {
+      display: inline-flex !important;
+    }
+
+    .prd-sale {
+      top: unset;
+      bottom: 5px;
+    }
+  }
+
+</style>
+
+<script type="application/json" id="media-json-{{ card_product.id }}">
+  {
+    {% for media in card_product.media %}
+      "media-src-{{ media.id }}": {
+        "alt": "{{ media.alt | escape }}",
+        "src": "{{ media.preview_image | image_url }}",
+        "type": "{{ media.media_type }}"
+      }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  }
+</script>

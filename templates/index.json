@@ -1,0 +1,462 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner": {
+      "type": "image-banner",
+      "blocks": {
+        "slide_jBAzDx": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/web_01_76f148ab-db73-4785-8ea6-b3907308dc0c.webp",
+            "mobile_image": "shopify://shop_images/web_01_v.webp",
+            "heading": "FLASH SALE",
+            "subheading": "UP TO 80% OFF  <br> LIMITED TIME ONLY!",
+            "button_text": "SHOP NOW",
+            "button_link": "shopify://collections/flash-sale"
+          }
+        },
+        "slide_miYJiQ": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/web_03.webp",
+            "mobile_image": "shopify://shop_images/web_03_v.webp",
+            "heading": "MODEST STREETWEAR",
+            "subheading": "",
+            "button_text": "SHOP NOW",
+            "button_link": "shopify://collections/modest-streetwear"
+          }
+        },
+        "slide_fiPCPe": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/web_004.webp",
+            "mobile_image": "shopify://shop_images/web_004v.webp",
+            "heading": "PLAINS",
+            "subheading": "",
+            "button_text": "Shop Now",
+            "button_link": "shopify://collections/core"
+          }
+        },
+        "slide_DcxbGQ": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/Artboard_1_5d49b1ab-04d6-4adc-a021-3bb66a464c20.jpg",
+            "mobile_image": "shopify://shop_images/Artboard_1_1_52e5e10a-639f-4de0-bc4e-f80d78ec3b46.png",
+            "heading": "BLACK ABAYA",
+            "subheading": "",
+            "button_text": "Shop Now",
+            "button_link": "shopify://collections/black-abaya"
+          }
+        },
+        "slide_LYeDCF": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/web_06_1.webp",
+            "mobile_image": "shopify://shop_images/web_06_v.webp",
+            "heading": "Art to Wear",
+            "subheading": "",
+            "button_text": "SHOP NOW",
+            "button_link": "shopify://collections/art-to-wear"
+          }
+        },
+        "slide_DWP9Mf": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/CAPS_BANNER_8.jpg",
+            "mobile_image": "shopify://shop_images/CAPS_BANNER_9.jpg",
+            "heading": "ACCESORIES",
+            "subheading": "",
+            "button_text": "SHOP NOW",
+            "button_link": "shopify://collections/fashion-forward"
+          }
+        }
+      },
+      "block_order": [
+        "slide_jBAzDx",
+        "slide_miYJiQ",
+        "slide_fiPCPe",
+        "slide_DcxbGQ",
+        "slide_LYeDCF",
+        "slide_DWP9Mf"
+      ],
+      "settings": {}
+    },
+    "collection_list_7k4KY6": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_jQ8EBe": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "t-shirts"
+          }
+        },
+        "featured_collection_e7zQ8z": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "abaya"
+          }
+        },
+        "featured_collection_8ihYD3": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "hoddies-jagger-sweatpants"
+          }
+        },
+        "featured_collection_iWw3jx": {
+          "type": "featured_collection",
+          "disabled": true,
+          "settings": {
+            "collection": "dress"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_jQ8EBe",
+        "featured_collection_e7zQ8z",
+        "featured_collection_8ihYD3",
+        "featured_collection_iWw3jx"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "img {object-fit: cover;}"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h2",
+        "image_ratio": "portrait",
+        "columns_desktop": 3,
+        "color_scheme": "scheme-2",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 8,
+        "padding_bottom": 8
+      }
+    },
+    "collection_cover_link_HcTCAC": {
+      "type": "collection-cover-link",
+      "blocks": {
+        "collection_tile_AgfDHP": {
+          "type": "collection_tile",
+          "settings": {
+            "image": "shopify://shop_images/Artboard_2_1_35580da9-e1af-42da-8fbd-0c5481e4ce99.png",
+            "collection": "classic-abaya",
+            "custom_css": "img {\n  scale: 1.035; \n  position: relative; \n  top: -10px;\n}"
+          }
+        },
+        "collection_tile_QaBGLP": {
+          "type": "collection_tile",
+          "settings": {
+            "image": "shopify://shop_images/Artboard_1_1_3a2f6796-53fc-4991-ba8d-643ae545f3ce.png",
+            "collection": "black-abaya",
+            "custom_css": "img {\n  scale: 1.035; \n  position: relative; \n  top: -10px;\n}"
+          }
+        },
+        "collection_tile_aW9Nm6": {
+          "type": "collection_tile",
+          "settings": {
+            "image": "shopify://shop_images/abay_abaya.png",
+            "collection": "kimono-abaya",
+            "custom_css": "img {height: 100%; scale: 1.025;}"
+          }
+        }
+      },
+      "block_order": [
+        "collection_tile_AgfDHP",
+        "collection_tile_QaBGLP",
+        "collection_tile_aW9Nm6"
+      ],
+      "custom_css": [],
+      "name": "Collection Cover Grid",
+      "settings": {}
+    },
+    "featured_collection_RAgpQy": {
+      "type": "featured-collection",
+      "custom_css": [
+        "h2 {text-align: center; text-transform: uppercase; margin: 10px 0px 0px 0px; font-size: 2.45rem; font-family: \"Oswald\", sans-seif; font-weight: 400; color: #fff;}"
+      ],
+      "name": "CLASSIC ABAYA",
+      "settings": {
+        "section_index": 3,
+        "collection": "classic-abaya",
+        "products_to_show": 4,
+        "title": "{{ section.settings.collection.title }}.",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": true,
+        "full_width": true,
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-3",
+        "image_ratio": "square",
+        "image_shape": "arch",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 4,
+        "padding_bottom": 4
+      }
+    },
+    "featured_collection_FrkdPC": {
+      "type": "featured-collection",
+      "custom_css": [
+        "h2 {text-align: center; text-transform: uppercase; margin: 10px 0px 0px 0px; font-size: 2.45rem; font-family: \"Oswald\", sans-seif; font-weight: 400; color: #444;}"
+      ],
+      "name": "PLAINS",
+      "settings": {
+        "section_index": 1,
+        "collection": "core",
+        "products_to_show": 4,
+        "title": "{{ section.settings.collection.title }}.",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "subtitle",
+        "columns_desktop": 4,
+        "enable_desktop_slider": true,
+        "full_width": true,
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-3",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 4,
+        "padding_bottom": 4
+      }
+    },
+    "featured_collection_wKGFxf": {
+      "type": "featured-collection",
+      "custom_css": [
+        "h2 {text-align: center; text-transform: uppercase; margin: 10px 0px 0px 0px; font-size: 2.45rem; font-family: \"Oswald\", sans-seif; font-weight: 400; color: #fff;}"
+      ],
+      "name": "CLASSIC BLACK",
+      "settings": {
+        "section_index": 4,
+        "collection": "black-abaya",
+        "products_to_show": 4,
+        "title": "{{ section.settings.collection.title }}.",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": true,
+        "full_width": true,
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-3",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 4,
+        "padding_bottom": 4
+      }
+    },
+    "featured_collection_k7UNkr": {
+      "type": "featured-collection",
+      "custom_css": [
+        "h2 {text-align: center; text-transform: uppercase; margin: 10px 0px 0px 0px; font-size: 2.45rem; font-family: \"Oswald\", sans-seif; font-weight: 400; color: #444;}"
+      ],
+      "name": "ART TO WEAR",
+      "settings": {
+        "section_index": 2,
+        "collection": "art-to-wear",
+        "products_to_show": 4,
+        "title": "{{ section.settings.collection.title }}.",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": true,
+        "full_width": true,
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-3",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 4,
+        "padding_bottom": 4
+      }
+    },
+    "featured_collection_Lk87cE": {
+      "type": "featured-collection",
+      "custom_css": [
+        "h2 {text-align: center; text-transform: uppercase; margin: 10px 0px 0px 0px; font-size: 2.45rem; font-family: \"Oswald\", sans-seif; font-weight: 400; color: #fff;}"
+      ],
+      "name": "KIMONO",
+      "settings": {
+        "section_index": 5,
+        "collection": "kimono-abaya",
+        "products_to_show": 4,
+        "title": "{{ section.settings.collection.title }}.",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": true,
+        "full_width": true,
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-3",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 4,
+        "padding_bottom": 4
+      }
+    },
+    "featured_collection_Xwnjm6": {
+      "type": "featured-collection",
+      "custom_css": [
+        "h2 {text-align: center; text-transform: uppercase; margin: 10px 0px 0px 0px; font-size: 2.45rem; font-family: \"Oswald\", sans-seif; font-weight: 400; color: #444;}"
+      ],
+      "name": "MEN",
+      "settings": {
+        "section_index": 6,
+        "collection": "men",
+        "products_to_show": 4,
+        "title": "{{ section.settings.collection.title }}.",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": true,
+        "full_width": true,
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-3",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 4,
+        "padding_bottom": 4
+      }
+    },
+    "featured_collection_iEFAiz": {
+      "type": "featured-collection",
+      "custom_css": [
+        "h2 {text-align: center; text-transform: uppercase; margin: 10px 0px 0px 0px; font-size: 2.45rem; font-family: \"Oswald\", sans-seif; font-weight: 400; color: #fff;}"
+      ],
+      "name": "WOMEN",
+      "settings": {
+        "section_index": 7,
+        "collection": "women",
+        "products_to_show": 4,
+        "title": "{{ section.settings.collection.title }}.",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": true,
+        "full_width": true,
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-3",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 4,
+        "padding_bottom": 4
+      }
+    },
+    "newsletter_nzMqyL": {
+      "type": "newsletter",
+      "blocks": {
+        "heading_UL4NhF": {
+          "type": "heading",
+          "settings": {
+            "heading": "JOIN US IN OUR JOURNEY!",
+            "heading_size": "h2"
+          }
+        },
+        "paragraph_kKi7KJ": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Be the first to hear about new collections, exclusive drops, and style inspiration straight to your inbox.</p>"
+          }
+        },
+        "email_form_9nQeUj": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "heading_UL4NhF",
+        "paragraph_kKi7KJ",
+        "email_form_9nQeUj"
+      ],
+      "custom_css": [
+        "p {font-size: 1.45rem;}"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "image_banner",
+    "collection_list_7k4KY6",
+    "collection_cover_link_HcTCAC",
+    "featured_collection_RAgpQy",
+    "featured_collection_FrkdPC",
+    "featured_collection_wKGFxf",
+    "featured_collection_k7UNkr",
+    "featured_collection_Lk87cE",
+    "featured_collection_Xwnjm6",
+    "featured_collection_iEFAiz",
+    "newsletter_nzMqyL"
+  ]
+}

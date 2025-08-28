@@ -1,0 +1,56 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "header": {
+      "type": "header",
+      "settings": {
+        "logo_position": "middle-center",
+        "mobile_logo_position": "center",
+        "menu": "new-main-menu",
+        "menu_type_desktop": "dropdown",
+        "sticky_header_type": "reduce-logo-size",
+        "show_line_separator": false,
+        "show_announcement": true,
+        "announcement_text": "Free international shipping for orders above",
+        "announcement_amount": "د.إ750",
+        "announcement_link": "",
+        "announcement_text_only": "Free shipping all over UAE",
+        "announcement_bg": "#111111",
+        "announcement_color": "#ffffff",
+        "color_scheme": "scheme-3",
+        "menu_color_scheme": "scheme-1",
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "enable_customer_avatar": true,
+        "margin_bottom": 0,
+        "padding_top": 8,
+        "padding_bottom": 8
+      }
+    },
+    "newsletter_popup_iAiNqi": {
+      "type": "newsletter-popup",
+      "settings": {
+        "show_every_time": false,
+        "banner_image": "shopify://shop_images/BANNER_05.jpg",
+        "popup_heading": "JOIN US IN OUR JOURNEY!",
+        "popup_subtext": "Be the first to hear about new collections, exclusive drops, and style inspiration  straight to your inbox.",
+        "button_text": "SUBSCRIBE",
+        "delay_time": 2
+      }
+    }
+  },
+  "order": [
+    "header",
+    "newsletter_popup_iAiNqi"
+  ]
+}

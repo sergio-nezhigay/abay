@@ -1,0 +1,21 @@
+{% comment %}
+  This section is used only for AJAX rendering of card-product blocks
+{% endcomment %}
+
+<div class="grid grid--4-col-desktop grid--2-col-tablet-down">
+  {% assign handles_param = request.params.handles | split: ',' %}
+  {% for handle in handles_param %}
+    {% assign product = all_products[handle] %}
+    {% if product and product.handle != 'hidden-gem-1' %}
+      <div class="grid__item">
+        {% render 'card-product',
+          card_product: product,
+          show_secondary_image: false,
+          section_id: 'random-featured',
+          quick_add: 'standard',
+          show_vendor: false
+        %}
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>

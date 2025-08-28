@@ -1,0 +1,61 @@
+{% schema %}
+{
+  "name": "About Us",
+  "tag": "section",
+  "class": "section about-us-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Main Heading",
+      "default": "About ABAY.com"
+    },
+    {
+      "type": "richtext",
+      "id": "intro_text",
+      "label": "Intro Text",
+      "default": "<p><strong>Where Streetwear Meets Modest Elegance</strong><br>At <strong>ABAY.com</strong>, we blur the lines between traditional modestwear and contemporary fashion. From <em>exclusive abaya designs</em> to <em>oversized T-shirts, joggers, and hoodies</em>, our collections are crafted for those who seek identity in style — not conformity.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "what_we_offer",
+      "label": "What We Offer",
+      "default": "<ul><li><strong>Luxury Abayas</strong> – Designed with grace, edge, and cultural depth.</li><li><strong>Oversized Streetwear</strong> – T-shirts, hoodies, and joggers tailored for comfort and individuality.</li><li><strong>DTG & Embroidery-Ready Art</strong> – In-house prints and embroidery graphics exclusive to ABAY.com.</li></ul>"
+    },
+    {
+      "type": "richtext",
+      "id": "vision_text",
+      "label": "Vision Statement",
+      "default": "<p>We’re not just a fashion label. We’re a <strong>creative studio</strong> merging <em>culture, innovation, and wearable art</em>. Our collections reflect the confidence of the region — with an attitude that speaks globally.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "why_abay",
+      "label": "Why ABAY.com",
+      "default": "<ul><li><strong>Exclusive Drops Only</strong> – No mass production. Just limited pieces with unmatched design.</li><li><strong>Artist-Driven Prints</strong> – DTG and embroidery art you won’t find anywhere else.</li><li><strong>Unisex Fits</strong> – Designed to empower all bodies, all voices.</li><li><strong>Rooted in the Gulf</strong> – Made for the region. Styled for the world.</li></ul>"
+    },
+    {
+      "type": "richtext",
+      "id": "contact_info",
+      "label": "Contact Info",
+      "default": "<p>📍 Based in Dubai, shipping worldwide.<br>📩 Reach us: hello@abay.com<br>📱 Follow us: <a href='https://www.instagram.com/abay.com' target='_blank'>@abay.com</a></p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Us Section"
+    }
+  ]
+}
+{% endschema %}
+
+<section class="page-width about-us-content">
+  <div class="about-us-inner">
+    <h2 class="h2 text-center">{{ section.settings.heading }}</h2>
+    <div class="about-us-block rich-text">{{ section.settings.intro_text }}</div>
+    <div class="about-us-block rich-text">{{ section.settings.what_we_offer }}</div>
+    <div class="about-us-block rich-text">{{ section.settings.vision_text }}</div>
+    <div class="about-us-block rich-text">{{ section.settings.why_abay }}</div>
+    <div class="about-us-block rich-text">{{ section.settings.contact_info }}</div>
+  </div>
+</section>
