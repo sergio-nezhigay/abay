@@ -4,9 +4,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "shopify theme dev --store=ubgs8y-qt.myshopify.com --theme 153771081971",
-    "push": "shopify theme push --store=ubgs8y-qt.myshopify.com --theme 153771081971",
-    "pull": "shopify theme pull --store=ubgs8y-qt.myshopify.com --theme 153771081971"
+    "dev": "shopify theme dev --store=ubgs8y-qt.myshopify.com --theme 154039091443",
+    "push": "shopify theme push --store=ubgs8y-qt.myshopify.com --theme 154039091443",
+    "pull": "shopify theme pull --store=ubgs8y-qt.myshopify.com --theme 154039091443"
   },
   "keywords": [],
   "author": "",
