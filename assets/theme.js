@@ -93,7 +93,7 @@ const bar_update = () => {
           $(document)
             .find('#FreeShippingText')
             .html(
-              `Only <span class="money">${remaining}</span> away from Free Shipping!`
+              `Only <span class="glc-money">${remaining}</span> away from Free Shipping!`
             );
         } else {
           meterDiv.css('width', '100%');
@@ -189,10 +189,11 @@ const plotHtml = (datas) => {
     if (rowAmount !== rowDiscountAmount) {
       cartItems_html += `<span class="old money">${rowAmount}</span>`;
     }
-    cartItems_html += `<span class="new money">${rowDiscountAmount}</span>`;
+    cartItems_html += `<span class="new glc-money">Dhs. ${rowDiscountAmount}</span>`;
+
     cartItems_html += `</div>`;
 
-    cartItems_html += `<div class="__prd_fin_money"><span class="money">${rowFinAmount}</span></div>`;
+    cartItems_html += `<div class="__prd_fin_money"><span class="glc-money">Dhs. ${rowFinAmount}</span></div>`;
 
     cartItems_html += `<div class="__prd_cart_menu">`;
     cartItems_html += `<div class="__prd_qty">`;
@@ -215,7 +216,7 @@ const plotHtml = (datas) => {
     .find(
       '#ctm-cart-parent .ctm-cart-content .ctm-cart-footer .__cartMoney-money'
     )
-    .html(`<span class="money">${cartTotal}</span>`);
+    .html(`<span class="glc-money">${cartTotal}</span>`);
 
   // RUN SHIPPING BAR
   bar_update();
